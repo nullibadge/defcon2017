@@ -10,6 +10,6 @@ Source code for a community built unofficial Defcon 25 badge.
 
 ## Compiling
 
-![MPLabX 3.61](http://www.microchip.com/development-tools/downloads-archive)
+[MPLabX 3.61](http://www.microchip.com/development-tools/downloads-archive)
 
 TODO add steps here
