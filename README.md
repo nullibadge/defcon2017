@@ -3,7 +3,7 @@
 Source code for a community built unofficial Defcon 25 badge.
 
 [About](http://nu.llify.com)
-[LICENSE](https://github.com/sebasoga/giphy/blob/master/LICENSE.md)
+
 [Order a Badge](https://docs.google.com/forms/d/1BT1bi9LWtsvNwGjnZjbqTZsIYf-_CRmu9A9kopbBeFg)
 
 ![](http://media.giphy.com/media/JdMtXSfw2kj60/200.gif)
