@@ -8,7 +8,7 @@ Source code for a community built unofficial Defcon 25 badge.
 
 ![](http://media.giphy.com/media/JdMtXSfw2kj60/200.gif)
 
-## Compiling
+## Programming
 
 ### Install MPLabX 3.65
 [Win](http://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v3.65-windows-installer.exe)
