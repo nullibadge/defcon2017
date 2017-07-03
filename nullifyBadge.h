@@ -34,6 +34,7 @@
 #include <xc.h> // include processor files - each processor file is guarded. 
 #include "xc8_types.h"
 #include "nullifyBadge_displayL2.h"
+#include "nullifyBadge_displayL1.h"
 #include "gamma_correction.h"
 
 // TODO Insert appropriate #include <>
@@ -128,6 +129,9 @@ void nullifyBadge_segDisplaySetBrightness(u8 brightness);
 
 /* Left shifts a single character onto the display - does not update display */
 void nullifyBadge_segDisplayPutChar (struct t_nullifyBadge *badge, char c);
+
+/* Places a character to the display at desired position - does not update display */
+void nullifyBadge_segDisplayPutCharPos (struct t_nullifyBadge *badge, char c, u8 pos);
 
 /* Left shifts a single character ontot the display - updates the display*/
 void nullifyBadge_segDisplayPrintChar (struct t_nullifyBadge *badge, char c);

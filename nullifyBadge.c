@@ -95,6 +95,10 @@ void nullifyBadge_segDisplayPutChar (struct t_nullifyBadge *badge, char c) {
     displayL2_PutChar(&badge->display, c);
 }
 
+void nullifyBadge_segDisplayPutCharPos (struct t_nullifyBadge *badge, char c, u8 pos) {
+    displayL1_SetSegChar(&badge->display.display_l1, c, pos);
+}
+
 /* Left shifts a single character ontot the display - updates the display*/
 void nullifyBadge_segDisplayPrintChar (struct t_nullifyBadge *badge, char c){
     displayL2_PrintChar(&badge->display, c);
@@ -173,34 +177,42 @@ void nullifyBadge_userLedsClr (struct t_nullifyBadge *badge) {
  */
 /* Reads the current state of the buttons */
 u8 nullifyBadge_buttonsGet() {
-    u8 retVal = 0;
+    u8 retVal = 0x0F;
     
-    retVal |= (USER_BTN_A_GetValue() << BUTTON_A);
-    retVal |= (USER_BTN_B_GetValue() << BUTTON_B);
-    retVal |= (USER_BTN_X_GetValue() << BUTTON_X);
-    retVal |= (USER_BTN_Y_GetValue() << BUTTON_Y);
+    retVal &= ~(USER_BTN_A_GetValue() << BUTTON_A);
+    retVal &= ~(USER_BTN_B_GetValue() << BUTTON_B);
+    retVal &= ~(USER_BTN_X_GetValue() << BUTTON_X);
+    retVal &= ~(USER_BTN_Y_GetValue() << BUTTON_Y);
     
     return retVal;
 }
 
 /* Reads the current state Button A*/
 u8 nullifyBadge_buttonAGet() {
-    return USER_BTN_A_GetValue();
+    u8 retVal = 0x1;
+    retVal &= ~USER_BTN_A_GetValue();
+    return retVal;
 }
 
 /* Reads the current state Button B*/
 u8 nullifyBadge_buttonBGet() {
-    return USER_BTN_B_GetValue();
+    u8 retVal = 0x1;
+    retVal &= ~USER_BTN_B_GetValue();
+    return retVal;
 }
 
 /* Reads the current state Button X*/
 u8 nullifyBadge_buttonXGet() {
-    return USER_BTN_X_GetValue();
+    u8 retVal = 0x1;
+    retVal &= ~USER_BTN_X_GetValue();
+    return retVal;
 }
 
 /* Reads the current state Button Y*/
 u8 nullifyBadge_buttonYGet() {
-    return USER_BTN_Y_GetValue();
+    u8 retVal = 0x1;
+    retVal &= ~USER_BTN_Y_GetValue();
+    return retVal;
 }
 
 /* 

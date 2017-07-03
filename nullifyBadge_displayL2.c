@@ -82,6 +82,7 @@ void displayL2_ForceUpdate (struct t_nullifyDisplay_l2 *display) {
 
 void displayL2_EraseSegDisplay (struct t_nullifyDisplay_l2 *display) {
     displayL2_PutStr(display, "    ");
+    displayL1_Update(&display->display_l1);
 }
 
 void displayL2_SetUserLeds (struct t_nullifyDisplay_l2 *display, u16 userLedData) {

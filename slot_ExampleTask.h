@@ -28,13 +28,10 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef NULLIFYBADGE_DISPLAYL1_H
-#define	NULLIFYBADGE_DISPLAYL1_H
+#ifndef SLOT_EXAMPLETASK_H
+#define	SLOT_EXAMPLETASK_H
 
-#include <xc.h> // include processor files - each processor file is guarded. 
-#include "xc8_types.h"
-#include "mcc_generated_files/mcc.h"
-#include <string.h>
+#include <xc.h> // include processor files - each processor file is guarded.  
 
 // TODO Insert appropriate #include <>
 
@@ -66,147 +63,64 @@
 // TODO Insert declarations or function prototypes (right here) to leverage 
 // live documentation
 
-u16 asciiCharTableLookup[128] = {
-  0x0000,
-  0x2000,
-  0x1010,
-  0x0020,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x0000,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1E1E,
-  0x1414,
-  0x1010,
-  0x1010,
-  0x0040,
-  0x0802,
-  0x63A9,
-  0x4080,
-  0x7031,
-  0x60B0,
-  0x5190,
-  0x31B0,
-  0x31B1,
-  0x6080,
-  0x71B1,
-  0x7190,
-  0x1010,
-  0x1010,
-  0x0808,
-  0x1010,
-  0x0202,
-  0x1010,
-  0x1010,
-  0x7191,
-  0x11B1,
-  0x2121,
-  0x50B1,
-  0x3121,
-  0x3101,
-  0x21B1,
-  0x5191,
-  0x2424,
-  0x40A1,
-  0x1909,
-  0x0121,
-  0x4B81,
-  0x4389,
-  0x61A1,
-  0x7111,
-  0x61A9,
-  0x7119,
-  0x31B0,
-  0x2404,
-  0x41A1,
-  0x0903,
-  0x418B,
-  0x0A0A,
-  0x0A04,
-  0x2822,
-  0x2121,
-  0x0208,
-  0x60A0,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x7191,
-  0x11B1,
-  0x2121,
-  0x50B1,
-  0x3121,
-  0x3101,
-  0x21B1,
-  0x5191,
-  0x2424,
-  0x40A1,
-  0x1909,
-  0x0121,
-  0x4B81,
-  0x4389,
-  0x61A1,
-  0x7111,
-  0x61A9,
-  0x7119,
-  0x31B0,
-  0x2404,
-  0x41A1,
-  0x0903,
-  0x418B,
-  0x0A0A,
-  0x0A04,
-  0x2822,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010
+/* Delay parameters time value can be calculated as ITERATIONS x TASK INTERVAL */
+#define SLOT_IDLE_FADE_DELAY_ITERATIONS           0
+#define SLOT_SPIN_ANIMATION_HOLD_ITERATIONS       2
+#define SLOT_FLASH_ANIMATION_HOLD_HIGH_ITERATIONS 12
+#define SLOT_FLASH_ANIMATION_HOLD_LOW_ITERATIONS  7
+#define SLOT_FLASH_ANIMATION_NUM_FLASHES          11
+#define SLOT_HOLD_RESULT_ITERATIONS               200
+
+#define SLOT_LED_IDLE_DELAY_ITERATONS 50;
+
+static const char* slotStrTable[9] = {
+    "BEER",
+    "WSKY",
+    "TQLA",
+    "SHOT",
+    "CPTN",
+    "VDKA",
+    " GIN",
+    "CHUG",
+    " RUM"
 };
 
-/* Level 1 Display API */
-struct t_nullifyDisplay_l1 {
-    u8 displayVect[10];
+enum t_slotAppStates {
+    SLOT_STATE_IDLE,
+    SLOT_STATE_SPIN,
+    SLOT_STATE_FLASH_RESULT,
+    SLOT_STATE_HOLD_RESULT
 };
 
-void displayL1_Initialize (struct t_nullifyDisplay_l1 *display);
-void displayL1_SetSegChar (struct t_nullifyDisplay_l1 *display, char c, u8 charPos);
-void displayL1_SetUserLed (struct t_nullifyDisplay_l1 *display, u16 userLedVect);
-void displayL1_SetDp (struct t_nullifyDisplay_l1 *display, u8 displayDpVect);
-void displayL1_Update (struct t_nullifyDisplay_l1 *display);
+struct t_slot_taskData {
+    /* Badge Hardware */
+    struct t_nullifyBadge *badge;
+    
+    /* Internal App Data */
+    u16 delayTickCount;
+    u8 slotIsIdle;
+    
+    u16 ledCntr;
+    u16 ledVect;
+    u8  ledSetNotClr;
+    u8  ledDir;
+    
+    u16 cntr;
+    u8 displayBrightness;
+    u8 displayFadeUp;
+    u8 i;
+    u8 j;
+    u8 k;
+    
+    u8 strIdx;
+    u16 userLeds;
+    
+    enum t_slotAppStates appState;
+};
+
+void slot_Init(void *taskData);
+void slot_Main (void *taskData);
+void slot_Exit(void *taskData);
 
 #ifdef	__cplusplus
 extern "C" {
@@ -219,5 +133,5 @@ extern "C" {
 }
 #endif /* __cplusplus */
 
-#endif	/* NULLIFYBADGE_DISPLAYL1_H */
+#endif	/* SLOT_EXAMPLETASK_H */
 

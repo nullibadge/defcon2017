@@ -52,6 +52,7 @@
 #include "blinky_ExampleTask.h"
 #include "fadeDisplay_ExampleTask.h"
 #include "led_ExampleTask.h"
+#include "slot_ExampleTask.h"
 
 /*
                          Main application
@@ -64,11 +65,13 @@ struct t_nullifyBadge badge_inst;
 static struct t_schedulerTask blinky_ExampleTask;
 static struct t_schedulerTask ledTask_ExampleTask;
 static struct t_schedulerTask fadeDisplay_ExampleTask;
+static struct t_schedulerTask slot_ExampleTask;
 
 /* Allocate task data structures */
 struct t_blinky_taskData blinky_TaskData;
 struct t_fadeDisplay_taskData fadeDisplay_TaskData;
 struct t_ledTask_taskData ledTask_TaskData;
+struct t_slot_taskData slot_TaskData;
 
 struct t_scheduler schedulerInst;
 
@@ -89,6 +92,7 @@ void main(void)
     blinky_TaskData.badge      = &badge_inst;
     ledTask_TaskData.badge     = &badge_inst;
     fadeDisplay_TaskData.badge = &badge_inst;
+    slot_TaskData.badge = &badge_inst;
     
     /* Configure Tasks */
     blinky_ExampleTask.taskData = (void *) &blinky_TaskData;
@@ -109,9 +113,15 @@ void main(void)
     fadeDisplay_ExampleTask.taskExitCallback = fadeDisplay_Exit;
     fadeDisplay_ExampleTask.taskInterval = 3;
     
+    slot_ExampleTask.taskData = (void *) &slot_TaskData;
+    slot_ExampleTask.taskInitCallback = slot_Init;
+    slot_ExampleTask.taskExecuteCallback = slot_Main;
+    slot_ExampleTask.taskExitCallback = slot_Exit;
+    slot_ExampleTask.taskInterval = 10;
+    
     /* Launch Tasks */
-    scheduler_TaskAdd(&schedulerInst, &fadeDisplay_ExampleTask);
-    scheduler_TaskAdd(&schedulerInst, &ledTask_ExampleTask);
+    //scheduler_TaskAdd(&schedulerInst, &fadeDisplay_ExampleTask);
+    scheduler_TaskAdd(&schedulerInst, &slot_ExampleTask);
     
     while(1){
         schedulerExecute(&schedulerInst);
