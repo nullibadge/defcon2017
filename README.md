@@ -51,4 +51,6 @@ Here is a picture of proper placement.
 11. Select your PICKit3. You may get a prompt about the having the right device selected. Ensure you are using the L version if you use a new revision (>rev1) of the badge. Click OK and the badge will program.
 
 
+Active tasks are set inside main.c, you can change them to run the other examples
+```scheduler_TaskAdd(&schedulerInst, &slot_ExampleTask);```
 
