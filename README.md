@@ -52,5 +52,6 @@ Here is a picture of proper placement.
 
 
 Active tasks are set inside main.c, you can change them to run the other examples
+
 ```scheduler_TaskAdd(&schedulerInst, &slot_ExampleTask);```
 
