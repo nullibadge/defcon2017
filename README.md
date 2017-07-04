@@ -39,8 +39,9 @@ Note: Early dev boards used a non L version microcontroller. These could take hi
 
 Note: You don't need to power the board with battery and shouldn't when programming them. You can turn off the battery power by toggling the switch on the bottom right of the badge.
 
-8. Under Conf:[default] -> select PICkit3 -> and change the power to 3.25V. Anything higher than 3.6V will fry the L microcontroller and destroy your badge.
-9. Connect the PICKit3 to your badge. The arrow indicates the left most pin.
+8. Under Conf:[default] -> select PICkit3 -> Under Options Categories select Power -> Check Power target circuit from PICkit3 -> change the power to 3.25V. Anything higher than 3.6V will fry the L microcontroller and destroy your badge. 
+9. Click General -> Apply -> X on the Properties Window
+10. Connect the PICKit3 to your badge. The arrow indicates the left most pin.
 
 Here is a picture of proper placement.
 
