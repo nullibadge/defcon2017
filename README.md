@@ -21,7 +21,7 @@ Source code for a community built unofficial Defcon 25 badge.
 [OSX](http://ww1.microchip.com/downloads/en/DeviceDoc/xc8-v1.42-full-install-osx-installer.dmg)
 
 ### GIT
-git clone https://github.com/nullibadge/
+git clone https://github.com/nullibadge/defcon2017.git
 
 ### Pickit3
 Acquire one of these: https://www.amazon.com/Funny-DIY-Expert-Programmer-Development/dp/B01NBPCLSR/ref=sr_1_1?ie=UTF8&qid=1498755321&sr=8-1&keywords=pickit3
