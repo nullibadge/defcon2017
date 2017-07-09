@@ -166,7 +166,7 @@ u16 asciiCharTableLookup[128] = {
   0x1010, // ` skip 
   0x7191, // a
   0x11B1, // b
-  0x2121, // c
+  0x1031, // c
   0x50B1, // d
   0x3121, // e
   0x3101, // f
