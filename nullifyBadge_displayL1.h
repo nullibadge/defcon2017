@@ -64,7 +64,28 @@
     <p><b>Remarks:</b></p>
  */
 // TODO Insert declarations or function prototypes (right here) to leverage 
-// live documentation
+
+/*
+Creating characters:
+bottom left = 0x1
+top left = 0x100
+bottom right = 0x80
+top right = 0x4000
+bottom =  0x20
+top = 0x2000
+dot = 0x40
+left bottom diag = 0x2
+right bottom diag = 0x8
+left top diag = 0x200
+right top diag = 0x800
+middle bottom = 0x4
+middle top = 0x400
+left middle = 0x1000
+right middle = 0x10
+
+Example:
+Char 7: 0x2000 or 0x4000 or 0x80 = 0x6080
+*/
 
 u16 asciiCharTableLookup[128] = {
   0x0000,
