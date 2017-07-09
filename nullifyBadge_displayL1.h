@@ -71,15 +71,15 @@ u16 asciiCharTableLookup[128] = {
   0x2000, // slot1
   0x1010, // slot2
   0x0020, // slot3
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
-  0x1010,
+  0x21A5, // balls right
+  0x60A5, // balls left
+  0x1200, // Tip top right
+  0x0810, // Tip top left
+  0x2020, // Wide Equals
+  0x30B1, // 8 no top wall - balls
+  0x4585, // triple pipe
+  0x3010, // Top equals
+  0x1010, 
   0x1010,
   0x1010,
   0x1010,
@@ -107,8 +107,8 @@ u16 asciiCharTableLookup[128] = {
   0x1010, // % skip
   0x1010, // & skip
   0x0400, // ' 
-  0x0808, // (
-  0x0202, // )
+  0x0808, // ( prints <
+  0x0202, // ) prints >
   0x1E1E, // *
   0x1414, // +
   0x0040, // , prints period
