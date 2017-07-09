@@ -194,7 +194,7 @@ u16 asciiCharTableLookup[128] = {
   0x0404, // |
   0x0202, // } prints >
   0x1010, // ~ prints -
-  0x1010
+  0xFFFF // del, but all leds
 };
 
 /* Level 1 Display API */
