@@ -1,4 +1,5 @@
 # Nullibadge
+This is the source code that wasn't made by a series of drunk coders.
 
 Source code for a community built unofficial Defcon 25 badge.
 
